@@ -15,7 +15,7 @@ library(argonR)
 library(argonDash)
 library(shinyWidgets)
 library(shinyEffects)
-
+library(sendmailR)
 
 ui <- fluidPage(
   useArgonDash(),setBackgroundColor(color = "ghostwhite"),
@@ -41,19 +41,39 @@ ui <- fluidPage(
                 bs4TabItem(tabName = "modulo1",
                            
                            fluidRow(argonCard(title = "Potreros 2019",leafletOutput("plot1_19"),status = "primary"
-                                              ,width =4,maximizable = TRUE,floating  = TRUE,shadow = TRUE,gradient = TRUE,
+                                              ,width = 4,maximizable = TRUE,hover_lift = TRUE,shadow = TRUE,gradient = TRUE,
                                               background_color = "lightgreen",hover_shadow = TRUE),
-                                    argonCard(title = "Potreros 2020",leafletOutput("plot1_20") ,status = "primary"
+                                    argonCard(title = "Potreros 2020",leafletOutput("plot1_20"),status = "primary"
                                               ,width = 4,maximizable = TRUE,hover_lift = TRUE,shadow = TRUE,gradient = TRUE,
                                               background_color = "lightgreen",hover_shadow = TRUE),
                                     argonCard(title = "Potreros 2021",leafletOutput("plot1_21") ,status = "primary"
                                               ,width = 4,maximizable = TRUE,hover_lift = TRUE,shadow = TRUE,gradient = TRUE,
-                                              background_color = "lightgreen",hover_shadow = TRUE))
-                           
-                           
-                )
-              )))
-)
+                                              background_color = "lightgreen",hover_shadow = TRUE),
+                                    argonCard(width = 4,sliderInput("dateSel1", "Date",
+                                                                    min = 9,
+                                                                    max = 40,
+                                                                    value = 9,
+                                                                    step = 1,
+                                                                    dragRange = TRUE,
+                                                                    #timeFormat = "%d %b %y",
+                                                                    animate = animationOptions(interval = 500, loop = FALSE))),
+                                    argonCard(width = 4,sliderInput("dateSel2", "Date",
+                                                         min = 9,
+                                                         max = 40,
+                                                         value = 9,
+                                                         step = 1,
+                                                         #timeFormat = "%d %b %y",
+                                                         animate = animationOptions(interval = 500, loop = FALSE))),
+                                    argonCard(width = 4,sliderInput("dateSel3", "Date",
+                                                                    min = 9,
+                                                                    max = 40,
+                                                                    value = 9,
+                                                                    step = 1,
+                                                                    #timeFormat = "%d %b %y",
+                                                                    animate = animationOptions(interval = 500, loop = FALSE)))
+                
+              ))))
+))
 
 
 
