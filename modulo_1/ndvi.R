@@ -1,19 +1,6 @@
-library(sp)
-library(rgdal)
-library(raster)
-library(shiny)
-library(dplyr)
-library(leaflet)
-library(geojsonR)
-library(rgdal)
-library(raster)
-library(stringr)
-library(plotly)
-library(xts)
-library(zoo)
-
-load("datos.RData")
+load("RData/datos.RData")
 series<-series[1:10,]
+colnames(series)<-gsub("Ã±","ñ",colnames(series))
 series$`Maiz 2`[is.na(series$`Maiz 2`)]<-mean(series$`Maiz 2`, na.rm = T)
 series$`El pero b`[is.na(series$`El pero b`)]<-mean(series$`El pero b`, na.rm = T)
 series$`Los bolos b`[is.na(series$`Los bolos b`)]<-mean(series$`Los bolos b`, na.rm = T)
@@ -55,5 +42,3 @@ fig <- plot_ly(data =data ,x = x, y = y1,type = 'scatter', mode = 'lines',name =
   add_trace(y = y13, name = colnames(series)[13],mode = 'lines') %>%
   add_trace(y = y14, name = colnames(series)[14],mode = 'lines') %>%
   add_trace(y = y15, name = colnames(series)[15],mode = 'lines')
-
-fig
